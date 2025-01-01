@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Class</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/lecturer.css') }}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="user-info">
+                <!-- Container chứa ảnh và input -->
+                <div class="profile-img-container">
+                    <!-- Label giúp ảnh trở thành nút bấm -->
+                    <label for="upload-avatar">
+                        <img 
+                            src="{{ url_for('static', filename=user_info.avatar_url or 'doremon.png') }}" 
+                            alt="User Profile" 
+                            class="profile-img" 
+                            title="Bấm vào để cập nhật ảnh đại diện">
+                    </label>
+                    <!-- Input file được ẩn -->
+                    <input 
+                        type="file" 
+                        id="upload-avatar" 
+                        name="avatar" 
+                        accept="image/*" 
+                        style="display: none;" 
+                        onchange="uploadAvatar()">
+                </div>
+                <!-- Thông tin người dùng -->
+                <div class="user-details">
+                    <p class="user">{{ user_info.full_name }}</p>
+                    <p class="email">{{ user_info.email }}</p>
+                    <p class="email">{{ user.role }}</p>
+                </div>
+            </div>
+            <hr>
+            <ul class="nav">
+                {% if user.role == 'admin' %}
+                <li><a  href="/admin"><i class='bx bxs-id-card'></i><span>Dash Board</span></a></li>
+                <li><a  href="/admin_manager"><i class='bx bxs-id-card'></i><span>User Manager</span></a></li>
+                {% elif user.role == 'student' %}
+                <li><a   class="active" href="/home"><i class='bx bxs-id-card'></i><span>Home</span></a></li>
+                <li><a  href="/search_classes"><i class='bx bxs-file-find' ></i><span>Search Class</span></a></li>
+                <li><a  href="/my_class"><i class='bx bxs-file-find' ></i><span>My Class</span></a></li>
+                {% elif user.role == 'lecturer' %}
+                <li><a  class="active"  href="/lecturer"><i class='bx bxs-id-card'></i><span>Dash Lecturer</span></a></li>
+                {% endif %}
+                <li><a  href="/upload"><i class='bx bxs-cloud-upload' ></i><span>Upload</span></a></li>
+                <li><a   href="/convert"><i class='bx bx-transfer' ></i><span>Convert</span></a></li>
+                <li><a   href="/view"><i class='bx bxs-book-reader' ></i><span>View</span></a></li>
+              
+                <li><a  href="/search"><i class='bx bxs-file-find' ></i><span>Search</span></a></li>
+                <li><a   href="/information"><i class='bx bxs-user-account' ></i><span>Update Profile</span></a></li>
+                <li><a   href="/change_pass"><i class='bx bxs-user-account' ></i><span>Forgot Password</span></a></li>
+                <li><a   class="nav-item nav-link" id="logout" href="/logout"><i class='bx bx-log-out' ></i><span>Logout</span></a></li>
+            </ul>
+        </div>
+
+        <div class="menu-content">
+            <div class="top-navbar">
+                <div class="top-navbar-right"> 
+                </div>
+            </div>
+            <div class="navbar">
+                <div class="navbar-left"> 
+                    <p class="school"><i class='bx bxs-graduation' ></i>Danang University of Technology</p>
+                    <p class="note">First Term - 2024/2025 Session</p>
+                </div>
+                <div class="navbar-right"> 
+                    <p class="home"><i class='bx bxs-home'></i>/Home</p>
+                </div>
+            </div>
+
+            <div class="main-file">
+                <div class="create-class">
+                    <h1>Create Class</h1>
+                    <form action="/create_class" method="POST">
+                        <div>
+                            <input type="text" name="class_name" id="class_name" placeholder="Nhập tên lớp" required>
+                            <textarea name="description" id="class_description" placeholder="Nhập mô tả lớp"></textarea>
+                            <button type="submit">Tạo</button>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="header">
+                    <h1>Danh Sách Lớp</h1>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Tên Lớp</th>
+                                <th>Mô Tả</th>
+                                <th>Người Tham Gia</th>
+                                <th>Hành Động</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for cls in classes %}
+                            <tr>
+                                <td>{{ cls.name }}</td>
+                                <td>{{ cls.description }}</td>
+                                <td>
+                                    <ul>
+                                        {% for u in cls.users %}
+                                            {% if u.id != user.id %}
+                                            <li>{{ u.user_name }}</li>
+                                            {%endif%}
+                                        {% endfor %}
+                                    </ul>
+                                </td>
+                                <td>
+                                    <form action="/delete_class/{{ cls.id }}" method="POST">
+                                        <button type="submit">Xóa</button>
+                                    </form>
+                                    <form action="/class_details/{{ cls.id }}" method="GET">
+                                        <button type="submit">View class</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function uploadAvatar() {
+            const fileInput = document.getElementById('upload-avatar');
+            const file = fileInput.files[0];
+            if (!file) {
+                alert("Please select a file!");
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('avatar', file);
+
+            fetch('/update-avatar', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Avatar updated successfully!');
+                    location.reload();
+                } else {
+                    alert('Failed to update avatar! ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred while updating avatar!');
+            });
+        }
+    </script>
+</body>
+</html>

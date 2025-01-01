@@ -1,0 +1,247 @@
+* {
+    box-sizing: border-box; /* Đảm bảo tính toán chiều rộng bao gồm padding và border */
+}
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7fb;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #002f6c;
+    color: white;
+    padding: 20px;
+}
+
+.user-info {
+    display: flex; /* Sử dụng flexbox để sắp xếp các phần tử */
+    align-items: center; /* Căn giữa theo chiều dọc */
+}
+
+.profile-img {
+    width: 60px; /* Đặt kích thước cho ảnh đại diện */
+    height: 60px; /* Đặt kích thước cho ảnh đại diện */
+    border-radius: 50%; /* Làm tròn ảnh đại diện */
+    margin-right: 10px; /* Khoảng cách giữa ảnh và thông tin người dùng */
+}
+
+.user-details  {
+    display: flex;
+    flex-direction: column; /* Sắp xếp tên và email theo cột */
+}
+.user-details p{
+    margin: 5px;
+}
+.user{
+    padding: 20px 0 0 0 ;
+    font-size: 18px;
+}
+.email {
+    font-size: 10px; /* Giảm kích thước font cho email */
+    color: #ffffff; /* Thay đổi màu sắc nếu cần */
+    padding: 0 0 10px 0;
+}
+
+
+.nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav li {
+    margin: 15px 0;
+}
+
+.nav a {
+    display: flex;
+    color: white;
+    align-items: center;
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
+    padding: 8px;
+    border-radius: 5px;
+    transition: background-color 0.3s,color 0.3s;
+}
+
+.nav a:hover {
+    background-color: #d51b1b;
+    color: #000;
+}
+
+.nav a.active {
+    background-color: #007bff;
+    color: white;
+}
+
+.nav a i {
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+.nav a span {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.menu-content {
+    display: flex;
+    background-color: #b6b3b3cc;
+    overflow-y: auto;
+    flex-direction: column;
+    width: 100%;
+}
+
+.top-navbar {
+    display: flex;
+    justify-content: flex-end;
+    background-color: #002f6c;
+    color: white;
+    padding: 25px 10px;
+    width: 100%;
+    height: 50px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fafafa;
+    color: white;
+    padding: 10px 10px;
+    width: 100%;
+    /* border-radius: 30px; */
+    height: 80px;
+    flex-direction: row;
+    border-bottom: 1px solid #ccc;
+}
+.navbar-left, .navbar-right {
+    display: flex; /* Sử dụng flexbox cho các phần tử bên trái và bên phải */
+    flex-direction: column; /* Sắp xếp các phần tử theo cột */
+    align-items: center; /* Căn giữa theo chiều ngang */
+}
+.school {
+    font-weight: bold; /* Đậm cho tên trường */
+    margin: 0; /* Loại bỏ khoảng cách mặc định */
+    font-size: 25px;
+    padding: 0 10px 0 30px ;
+    color: #000;
+}
+
+.note {
+    margin: 0; /* Loại bỏ khoảng cách mặc định */
+    font-size: 0.9em; /* Kích thước font cho ghi chú (có thể thay đổi) */
+    color: #666; /* Màu sắc cho ghi chú (có thể thay đổi) */
+}
+.home {
+    font-size: 15px;
+    font-weight: bold;
+    margin: 0;
+    padding: 0 20px 0 0 ;
+    color: #000;
+}
+
+.main-file {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 20px;
+}
+
+.search-class{
+    /* background-color:wheat; */
+}
+.search-class input{
+    padding: 10px;
+    width:100% ;
+
+}
+.search-class button{
+    margin: 10px;
+}
+
+
+
+.header h1 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+thead {
+    background-color: #f2f2f2;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    font-weight: bold;
+    background-color: #f0f0f0;
+}
+
+tbody tr:hover {
+    background-color: #f9f9f9;
+}
+
+tbody td {
+    font-size: 14px;
+    color: #555;
+}
+
+button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 14px;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+form {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+td .user-name, td .upload-time {
+    color: #333;
+}
+
+td .status {
+    font-weight: bold;
+    color: #28a745;
+}
+
+td .status.pending {
+    color: #ffc107;
+}
+
+td .status.rejected {
+    color: #dc3545;
+}
+

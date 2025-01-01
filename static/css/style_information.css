@@ -1,0 +1,118 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins',sans-serif;
+}
+body {
+    display: flex;
+    background: #ff7f50;
+    background: linear-gradient(to bottom, #1e90ff 50%, #ffffff 50%);
+    height: 100vh;
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+}
+.wrapper {
+    
+    width: 500px;
+    background: rgba(43, 220, 173, 0.981);
+    color:white;
+    border-radius: 20px;
+    padding: 30px 40px ;
+}
+.wrapper h2 {
+    font-size: 36px;
+    text-align: center;
+    color: #000;
+
+}
+.wrapper .select{
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    
+}
+
+.wrapper .input-box{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    /* background: cornflowerblue; */
+    margin: 30px 0;
+}
+
+.input-box input  {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 50px;
+    color: black;
+    padding: 20px 45px 20px 20px;
+}
+.input-box input::placeholder{
+    color: grey;
+}
+.input-box i{
+    position: absolute;
+    right: 10px;
+    color: #000;
+    top: 60%;
+    transform: translate(-50%);
+    font-size: 20px;
+}
+.input-box label{
+    color: #000;
+    bottom: 10px;
+    padding: 10px;
+    margin: 10px;
+    font-size: 15px;
+    font-weight:bold;
+}
+
+.wrapper .forgot-password{
+    display: flex;
+    justify-content: flex-end;
+    font-size: 12px;
+    margin: 40px  20px 20px 0  ;
+}
+.forgot-password a{
+    color:white;
+    text-decoration: none;
+}
+.forgot-password a:hover{
+    text-decoration: underline;
+}
+.wrapper .btn{
+    width: 80%;
+    height: 50px;
+    background: white;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 16px;
+    color: #000;
+    font-weight: bold;
+    margin: 20px 0 0 30px ;
+    
+}
+.wrapper .register-link{
+    font-size: 15px;
+    text-align: center;
+    margin: 20px 0 15px ;
+}
+.wrapper p a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+}
+.wrapper p a:hover{
+    text-decoration: underline;
+}
+
+.wrapper .login{
+    font-size: 15px;
+    text-align: center;
+    margin: 20px 0 15px ;
+}

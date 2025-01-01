@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_profile.css') }}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    
+    <div class="container">
+        <!-- Top Navbar -->
+       
+        <div class="sidebar">
+            <div class="user-info">
+                <!-- Container chứa ảnh và input -->
+                <div class="profile-img-container">
+                    <!-- Label giúp ảnh trở thành nút bấm -->
+                    <label for="upload-avatar">
+                        <img 
+                            src="{{ url_for('static', filename=user_info.avatar_url or 'doremon.png') }}" 
+                            alt="User Profile" 
+                            class="profile-img" 
+                            title="Bấm vào để cập nhật ảnh đại diện">
+                    </label>
+                    <!-- Input file được ẩn -->
+                    <input 
+                        type="file" 
+                        id="upload-avatar" 
+                        name="avatar" 
+                        accept="image/*" 
+                        style="display: none;" 
+                        onchange="uploadAvatar()">
+                </div>
+                <!-- Thông tin người dùng -->
+                <div class="user-details">
+                    <p class="user">{{ user_info.full_name }}</p>
+                    <p class="email">{{ user_info.email }}</p>
+                    <p class="email">{{ user.role }}</p>
+                </div>
+            </div>
+            
+            <hr>
+            <ul class="nav">
+                {% if user.role == 'admin' %}
+                <li><a  href="/admin"><i class='bx bxs-id-card'></i><span>Dash Board</span></a></li>
+                <li><a  href="/admin_manager"><i class='bx bxs-id-card'></i><span>User Manager</span></a></li>
+                {% elif user.role == 'student' %}
+                <li><a href="/home"><i class='bx bxs-id-card'></i><span>Home</span></a></li>
+                <li><a  href="/search_classes"><i class='bx bxs-file-find' ></i><span>Search Class</span></a></li>
+                <li><a  href="/my_class"><i class='bx bxs-file-find' ></i><span>My Class</span></a></li>
+                {% elif user.role == 'lecturer' %}
+                <li><a href="/lecturer"><i class='bx bxs-id-card'></i><span>Dash Lecturer</span></a></li>
+                {% endif %}
+                <li><a  href="/upload"><i class='bx bxs-cloud-upload' ></i><span>Upload</span></a></li>
+                <li><a   href="/convert"><i class='bx bx-transfer' ></i><span>Convert</span></a></li>
+                <li><a   href="/view"><i class='bx bxs-book-reader' ></i><span>View</span></a></li>
+                <li><a  href="/search"><i class='bx bxs-file-find' ></i><span>Search</span></a></li>
+                <li><a  class="active"  href="/information"><i class='bx bxs-user-account' ></i><span>Update Profile</span></a></li>
+                <li><a   href="/change_pass"><i class='bx bxs-user-account' ></i><span>Forgot Password</span></a></li>
+                <li><a   class="nav-item nav-link" id="logout" href="/logout"><i class='bx bx-log-out' ></i><span>Logout</span></a></li>
+            </ul>
+        </div>
+       
+        <div class="menu-content">
+            <div class="top-navbar">
+                <div class="top-navbar-right"> 
+                </div>
+            </div>
+            <div class="navbar">
+                <div class="navbar-left"> 
+                    <p class="school"><i class='bx bxs-graduation' ></i>Danang University of Technology</p>
+                    <p class="note">First Term - 2024/2025 Session</p>
+                </div>
+                <div class="navbar-right"> 
+                    <p class="home"><i class='bx bxs-home'></i>/Home</p>
+                </div>
+            </div>
+            <div class="upload-container">
+                <div class="wrapper">
+                    <h2 >Update Your Information</h2>
+                    <form method="POST">
+                        <div class="input-box">
+                            <label for="full_name">Full Name:</label>
+                            <input type="text" id="full_name" name="full_name" class="form-control" >
+                        </div>
+                        <div class="input-box">
+                            <label for="class">Class:</label>
+                            <input type="text" id="class" name="class" class="form-control" >
+                        </div>
+                        <div class="input-box">
+                            <label for="age">Age:</label>
+                            <input type="number" id="age" name="age" class="form-control"  >
+                        </div>
+                        <div class="input-box">
+                            <label for="address">Address:</label>
+                            <!-- <textarea id="address" name="address" class="form-control"></textarea> -->
+                            <input  id="address" name="address" class="form-control"  >
+                        </div>
+                        <div class="input-box">
+                            <label for="address">Phone:</label>
+                            <!-- <textarea id="phone" name="phone" class="form-control"></textarea> -->
+                            <input  id="phone" name="phone" class="form-control"  >
+                        </div>
+                        <div class="input-box">
+                            <label for="gender">Gender:</label>
+                            <select id="gender" name="gender" class="form-control" >
+                                <option value="" >Select Gender</option>
+                                <option value="Male" >Male</option>
+                                <option value="Female" >Female</option>
+                                <option value="Other" >Other</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </form>
+                </div>
+                <div class="images">
+                 <div class="images1">
+                 </div>
+                </div>
+            </div>
+            
+        </div>
+       
+    </div>
+    <script>
+        function uploadAvatar() {
+            const fileInput = document.getElementById('upload-avatar');
+            const file = fileInput.files[0];
+            if (!file) {
+                alert("Please select a file!");
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('avatar', file);
+
+            fetch('/update-avatar', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Avatar updated successfully!');
+                    location.reload();
+                } else {
+                    alert('Failed to update avatar! ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred while updating avatar!');
+            });
+        }
+    </script>
+</body>
+</html>
+
+
+

@@ -1,0 +1,255 @@
+* {
+    box-sizing: border-box; /* Đảm bảo tính toán chiều rộng bao gồm padding và border */
+}
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7fb;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #002f6c;
+    color: white;
+    padding: 20px;
+}
+
+.user-info {
+    display: flex; /* Sử dụng flexbox để sắp xếp các phần tử */
+    align-items: center; /* Căn giữa theo chiều dọc */
+}
+
+.profile-img {
+    width: 60px; /* Đặt kích thước cho ảnh đại diện */
+    height: 60px; /* Đặt kích thước cho ảnh đại diện */
+    border-radius: 50%; /* Làm tròn ảnh đại diện */
+    margin-right: 10px; /* Khoảng cách giữa ảnh và thông tin người dùng */
+}
+
+.user-details  {
+    display: flex;
+    flex-direction: column; /* Sắp xếp tên và email theo cột */
+}
+.user-details p{
+    margin: 5px;
+}
+.user{
+    padding: 20px 0 0 0 ;
+    font-size: 18px;
+}
+.email {
+    font-size: 10px; /* Giảm kích thước font cho email */
+    color: #ffffff; /* Thay đổi màu sắc nếu cần */
+    padding: 0 0 10px 0;
+}
+
+.nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav li {
+    margin: 15px 0;
+}
+
+.nav a {
+    display: flex;
+    color: white;
+    align-items: center;
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
+    padding: 8px;
+    border-radius: 5px;
+    transition: background-color 0.3s,color 0.3s;
+}
+
+.nav a:hover {
+    background-color: #d51b1b;
+    color: #000;
+}
+.nav a.active {
+    background-color: #007bff; /* Màu nền cho liên kết đang hoạt động */
+    color: white; /* Màu chữ cho liên kết đang hoạt động */
+}
+.nav a i {
+    margin-right: 10px;
+    font-size: 20px;
+}
+.nav a span {
+    font-size: 16px;
+    font-weight: 500;
+}
+.menu-content {
+    display: flex;
+    /* padding: 10px; */
+    background-color: #b6b3b3cc;
+    overflow-y: auto;
+    /* align-items: center;  */
+    /* justify-content: center;  */
+    flex-direction: column;
+    width: 100%;
+}
+
+.top-navbar {
+    display: flex;
+    justify-content: flex-end;
+    background-color: #002f6c;
+    color: white;
+    padding: 25px 10px;
+    width: 100%;
+    /* border-radius: 30px; */
+    height: 50px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fafafa;
+    color: white;
+    padding: 10px 10px;
+    width: 100%;
+    /* border-radius: 30px; */
+    height: 100px;
+    flex-direction: row;
+    border-bottom: 1px solid #ccc;
+}
+.navbar-left, .navbar-right {
+    display: flex; /* Sử dụng flexbox cho các phần tử bên trái và bên phải */
+    flex-direction: column; /* Sắp xếp các phần tử theo cột */
+    align-items: center; /* Căn giữa theo chiều ngang */
+}
+.school {
+    font-weight: bold; /* Đậm cho tên trường */
+    margin: 0; /* Loại bỏ khoảng cách mặc định */
+    font-size: 25px;
+    padding: 0 10px 0 30px ;
+    color: #000;
+}
+
+.note {
+    margin: 0; /* Loại bỏ khoảng cách mặc định */
+    font-size: 0.9em; /* Kích thước font cho ghi chú (có thể thay đổi) */
+    color: #666; /* Màu sắc cho ghi chú (có thể thay đổi) */
+}
+.home {
+    font-size: 15px;
+    font-weight: bold;
+    margin: 0;
+    padding: 0 20px 0 0 ;
+    color: #000;
+}
+
+.search-container {
+    display: flex; /* Sử dụng flexbox để sắp xếp các phần tử */
+    justify-content: center; /* Căn giữa các phần tử */
+    margin: 15px 0; /* Khoảng cách trên và dưới cho thanh tìm kiếm */
+    /* flex-direction: column; */
+}
+
+.search-input {
+    width: 300px; /* Chiều rộng của thanh tìm kiếm (có thể điều chỉnh) */
+    padding: 10px; /* Khoảng cách bên trong cho thanh tìm kiếm */
+    border: 1px solid #ccc; /* Đường viền cho thanh tìm kiếm */
+    border-radius: 5px; /* Bo góc cho thanh tìm kiếm */
+    font-size: 16px; /* Kích thước font cho thanh tìm kiếm */
+}
+
+.search-button {
+    padding: 10px 15px; /* Khoảng cách bên trong cho nút tìm kiếm */
+    margin-left: 10px; /* Khoảng cách bên trái cho nút tìm kiếm */
+    border: none; /* Loại bỏ đường viền */
+    border-radius: 5px; /* Bo góc cho nút tìm kiếm */
+    background-color: #007bff; /* Màu nền cho nút tìm kiếm */
+    color: white; /* Màu chữ cho nút tìm kiếm */
+    cursor: pointer; /* Hiển thị con trỏ khi di chuột qua nút */
+}
+
+.search-button:hover {
+    background-color: #0056b3; /* Màu nền khi di chuột qua nút tìm kiếm */
+}
+
+.search-results {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); /* Tự động điều chỉnh số cột */
+    gap: 15px; /* Khoảng cách giữa các ô */
+    padding: 20px; /* Padding cho lưới */
+    margin: 0; /* Loại bỏ margin bên ngoài */
+    width: 100%; /* Chiều rộng 100% trừ đi padding */
+    overflow-x: hidden; /* Ẩn cuộn ngang nếu có */
+    background-color: #fafafa;
+    height: 100%;
+    box-sizing: border-box; /* Đảm bảo tính toán chiều rộng bao gồm padding và border */
+}
+
+.search-results div {
+    padding: 10px;
+    cursor: pointer;
+    box-sizing: border-box; /* Đảm bảo tính toán chiều rộng bao gồm padding và border */
+}
+
+.result-item {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #783030;
+    display: flex;
+    align-items: flex-start;
+    overflow: hidden;
+    height: 200px;
+    /* flex-direction: column; */
+    box-shadow:  0 2px 5px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box; /* Đảm bảo tính toán chiều rộng bao gồm padding và border */
+}
+.search-results div:hover {
+    background-color: #b0b0b0;
+}
+.result-item-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+}
+
+.result-item-image {
+    width: 80px;
+    height: 80px;
+    margin-right: 5px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.result-item-info {
+    flex-grow: 1; /* Cho phép phần thông tin mở rộng */
+}
+
+.result-item-info p {
+    margin: 5px 0;
+    font-size: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.download-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.download-btn:hover {
+    background-color: #45a049;
+}
