@@ -1,0 +1,302 @@
+* {
+    box-sizing: border-box; /* Đảm bảo tính toán chiều rộng bao gồm padding và border */
+}
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7fb;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #002f6c;
+    color: white;
+    padding: 20px;
+}
+
+.user-info {
+    display: flex; /* Sử dụng flexbox để sắp xếp các phần tử */
+    align-items: center; /* Căn giữa theo chiều dọc */
+}
+
+.profile-img {
+    width: 60px; /* Đặt kích thước cho ảnh đại diện */
+    height: 60px; /* Đặt kích thước cho ảnh đại diện */
+    border-radius: 50%; /* Làm tròn ảnh đại diện */
+    margin-right: 10px; /* Khoảng cách giữa ảnh và thông tin người dùng */
+}
+
+.user-details  {
+    display: flex;
+    flex-direction: column; /* Sắp xếp tên và email theo cột */
+}
+.user-details p{
+    margin: 5px;
+}
+.user{
+    padding: 20px 0 0 0 ;
+    font-size: 18px;
+}
+.email {
+    font-size: 10px; /* Giảm kích thước font cho email */
+    color: #ffffff; /* Thay đổi màu sắc nếu cần */
+    padding: 0 0 10px 0;
+}
+
+
+.nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav li {
+    margin: 15px 0;
+}
+
+.nav a {
+    display: flex;
+    color: white;
+    align-items: center;
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
+    padding: 8px;
+    border-radius: 5px;
+    transition: background-color 0.3s,color 0.3s;
+}
+
+.nav a:hover {
+    background-color: #d51b1b;
+    color: #000;
+}
+.nav a.active {
+    background-color: #007bff; /* Màu nền cho liên kết đang hoạt động */
+    color: white; /* Màu chữ cho liên kết đang hoạt động */
+}
+.nav a i {
+    margin-right: 10px;
+    font-size: 20px;
+}
+.nav a span {
+    font-size: 16px;
+    font-weight: 500;
+}
+.menu-content {
+    display: flex;
+    /* padding: 10px; */
+    background-color: #858585;
+    overflow-y: auto;
+    /* align-items: center;  */
+    /* justify-content: center;  */
+    flex-direction: column;
+    width: 100%;
+}
+
+.top-navbar {
+    display: flex;
+    justify-content: flex-end;
+    background-color: #002f6c;
+    color: white;
+    padding: 25px 10px;
+    width: 100%;
+    /* border-radius: 30px; */
+    height: 50px;
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fafafa;
+    color: white;
+    padding: 10px 10px;
+    width: 100%;
+    /* border-radius: 30px; */
+    height: 80px;
+    flex-direction: row;
+    border-bottom: 1px solid #ccc;
+}
+.navbar-left, .navbar-right {
+    display: flex; /* Sử dụng flexbox cho các phần tử bên trái và bên phải */
+    flex-direction: column; /* Sắp xếp các phần tử theo cột */
+    align-items: center; /* Căn giữa theo chiều ngang */
+}
+.school {
+    font-weight: bold; /* Đậm cho tên trường */
+    margin: 0; /* Loại bỏ khoảng cách mặc định */
+    font-size: 25px;
+    padding: 0 10px 0 30px ;
+    color: #000;
+}
+
+.note {
+    margin: 0; /* Loại bỏ khoảng cách mặc định */
+    font-size: 0.9em; /* Kích thước font cho ghi chú (có thể thay đổi) */
+    color: #666; /* Màu sắc cho ghi chú (có thể thay đổi) */
+}
+.home {
+    font-size: 15px;
+    font-weight: bold;
+    margin: 0;
+    padding: 0 20px 0 0 ;
+    color: #000;
+}
+.upload-container{
+    display: flex;
+    flex-direction: column;
+    /* background-color: #218838; */
+}
+.upload-done{
+    /* flex: 1; */
+    /* background-color: aquamarine; */
+    width: 100%;
+    /* margin: 10px 0px 0 0px ; */
+    /* border-radius: 15px; */
+    padding: 0px 0px 0 0 ;
+}
+.word{
+    /* flex: 1; */
+    background-color: #858585;
+}
+.word h3{
+    color: #000;
+    background-color: #007bff;
+    border-radius: 0px;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    /* border: 2px solid #002f6c; */
+    padding: 10px; 
+    background-color: #216ddf; /* Màu nền cho h3 */
+    margin: 0px 0px 20px 0px;
+}
+.convertto {
+    background-color: #216ddf;
+}
+.upload-done h3 {
+    text-align: center;
+    /* border: 2px solid #002f6c;  */
+
+    padding: 15px ; 
+    background-color: #ccc9c9; /* Màu nền cho h3 */
+    margin: 0 0px 20px 0px; 
+}
+.file-grid {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr); /* Tạo 5 cột */
+    gap: 5px; /* Khoảng cách giữa các ô */
+    padding: 10px ; /* Padding cho lưới */
+    /* background-color: #000; */
+    margin: 0 0 0 10px;
+    
+}
+
+.file-card {
+    background-color: #ffffff; /* Màu nền cho ô */
+    border: 1px solid #ddd; /* Viền cho ô */
+    border-radius: 10px; /* Bo góc cho ô */
+    text-align: center; /* Căn giữa nội dung */
+    padding: 10px; /* Padding cho ô */
+    transition: box-shadow 0.3s; /* Hiệu ứng chuyển động */
+    height: 100px;
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+}
+
+.file-card:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Hiệu ứng bóng khi di chuột qua */
+}
+
+.file-image {
+    width: 50%; /* Chiều rộng hình ảnh 100% */
+    height: auto; /* Chiều cao tự động */
+    border-radius: 10px; /* Bo góc cho hình ảnh */
+    padding: 0 0 0 0px;
+    margin: 0 0 0 20px;
+}
+
+.file-name {
+    display: block; /* Hiển thị tên tệp dưới hình ảnh */
+    margin-top: 5px; /* Giảm khoảng cách trên */
+    font-weight: bold; /* Độ đậm của chữ */
+    font-size: 10px; /* Giảm kích thước chữ */
+    white-space: nowrap; /* Ngăn không cho văn bản xuống dòng */
+    overflow: hidden; /* Ẩn phần văn bản vượt quá */
+    text-overflow: ellipsis; /* Hiển thị dấu ba chấm khi văn bản quá dài */
+    width: 100%; /* Đặt chiều rộng 100% để sử dụng hết không gian */
+    max-width: 100%; 
+    box-sizing: border-box; /* Đảm bảo padding không làm tăng chiều rộng */
+}
+.file-type {
+    font-size: 12px; /* Kích thước chữ cho loại tệp */
+     color: #5a5a5a; /* Màu chữ cho loại tệp */
+}
+
+.convert-btn{
+    margin: 5px;
+    display: inline-block; /* Đảm bảo nút hiển thị như một khối nội tuyến */
+    padding: 5px 5px; /* Padding cho nút */
+    font-size: 12px; /* Kích thước chữ nhỏ hơn */
+    color: white; /* Màu chữ */
+    background-color: #6f3194; /* Màu nền xanh */
+    border: none; /* Bỏ viền */
+    border-radius: 5px; /* Bo góc cho nút */
+    text-decoration: none; /* Bỏ gạch chân */
+    transition: background-color 0.3s; /* Hiệu ứng chuyển màu */
+}
+
+
+.convert-btn:hover {
+    background-color: #218838; /* Màu nền khi di chuột qua */
+}
+.content-box {
+    border: 1px solid #ccc; /* Đường viền cho container */
+    border-radius: 5px; /* Bo góc cho container */
+    padding: 15px; /* Khoảng cách bên trong cho container */
+    max-width: 100%; /* Chiều rộng tối đa cho container (có thể điều chỉnh) */
+    overflow: auto; /* Thêm thanh cuộn nếu nội dung vượt quá kích thước */
+    background-color: #f9f9f9; /* Màu nền cho container */
+    margin: 0 10px 0 10px;
+}
+
+.content-word {
+    margin-bottom: 10px; /* Khoảng cách giữa các phần tử content-word */
+}
+
+.content-word pre {
+    white-space: pre-wrap;
+    word-wrap: break-word; /* Không ngắt từ */
+    margin: 0; /* Loại bỏ margin mặc định */
+    font-family: monospace; /* Sử dụng font chữ monospace để hiển thị đúng định dạng */
+    font-size: 14px; /* Kích thước font (có thể điều chỉnh) */
+}
+
+.issues {
+    background-color: white;
+    margin: 10px 10px 0 10px;
+    padding: 15px;
+    border-radius: 5px;
+
+}
+.issues h3{
+    color: #000;
+    background-color: #007bff;
+    border-radius: 0px;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    /* border: 2px solid #002f6c; */
+    /* padding: 10px;  */
+    background-color: #216ddf; /* Màu nền cho h3 */
+    margin: 0px 0px 20px 0px;
+
+}

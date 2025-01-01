@@ -1,0 +1,276 @@
+* {
+    box-sizing: border-box; /* Đảm bảo tính toán chiều rộng bao gồm padding và border */
+}
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7fb;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #002f6c;
+    color: white;
+    padding: 20px;
+}
+
+.user-info {
+    display: flex; /* Sử dụng flexbox để sắp xếp các phần tử */
+    align-items: center; /* Căn giữa theo chiều dọc */
+}
+
+.profile-img {
+    width: 60px; /* Đặt kích thước cho ảnh đại diện */
+    height: 60px; /* Đặt kích thước cho ảnh đại diện */
+    border-radius: 50%; /* Làm tròn ảnh đại diện */
+    margin-right: 10px; /* Khoảng cách giữa ảnh và thông tin người dùng */
+}
+
+.user-details  {
+    display: flex;
+    flex-direction: column; /* Sắp xếp tên và email theo cột */
+}
+.user-details p{
+    margin: 5px;
+}
+.user{
+    padding: 20px 0 0 0 ;
+    font-size: 18px;
+}
+.email {
+    font-size: 10px; /* Giảm kích thước font cho email */
+    color: #ffffff; /* Thay đổi màu sắc nếu cần */
+    padding: 0 0 10px 0;
+}
+
+.nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav li {
+    margin: 15px 0;
+}
+
+.nav a {
+    display: flex;
+    color: white;
+    align-items: center;
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
+    padding: 8px;
+    border-radius: 5px;
+    transition: background-color 0.3s,color 0.3s;
+}
+
+.nav a:hover {
+    background-color: #d51b1b;
+    color: #000;
+}
+.nav a.active {
+    background-color: #007bff; /* Màu nền cho liên kết đang hoạt động */
+    color: white; /* Màu chữ cho liên kết đang hoạt động */
+}
+.nav a i {
+    margin-right: 10px;
+    font-size: 20px;
+}
+.nav a span {
+    font-size: 16px;
+    font-weight: 500;
+}
+.menu-content {
+    display: flex;
+    /* padding: 10px; */
+    background-color: #b6b3b3cc;
+    overflow-y: auto;
+    /* align-items: center;  */
+    /* justify-content: center;  */
+    flex-direction: column;
+    width: 100%;
+}
+
+.top-navbar {
+    display: flex;
+    justify-content: flex-end;
+    background-color: #002f6c;
+    color: white;
+    padding: 25px 10px;
+    width: 100%;
+    /* border-radius: 30px; */
+    height: 50px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fafafa;
+    color: white;
+    padding: 10px 10px;
+    width: 100%;
+    /* border-radius: 30px; */
+    height: 80px;
+    flex-direction: row;
+    border-bottom: 1px solid #ccc;
+}
+.navbar-left, .navbar-right {
+    display: flex; /* Sử dụng flexbox cho các phần tử bên trái và bên phải */
+    flex-direction: column; /* Sắp xếp các phần tử theo cột */
+    align-items: center; /* Căn giữa theo chiều ngang */
+}
+.school {
+    font-weight: bold; /* Đậm cho tên trường */
+    margin: 0; /* Loại bỏ khoảng cách mặc định */
+    font-size: 25px;
+    padding: 0 10px 0 30px ;
+    color: #000;
+}
+
+.note {
+    margin: 0; /* Loại bỏ khoảng cách mặc định */
+    font-size: 0.9em; /* Kích thước font cho ghi chú (có thể thay đổi) */
+    color: #666; /* Màu sắc cho ghi chú (có thể thay đổi) */
+}
+.home {
+    font-size: 15px;
+    font-weight: bold;
+    margin: 0;
+    padding: 0 20px 0 0 ;
+    color: #000;
+}
+.main-file {
+    display: grid; /* Sử dụng grid layout */
+    grid-template-columns: repeat(4, 1fr); /* 4 cột cho các ô */
+    gap: 10px; /* Khoảng cách giữa các ô */
+    padding: 20px; /* Khoảng cách bên trong cho main-file */
+}
+
+.header {
+    grid-column: span 4; /* Chiếm toàn bộ 4 cột cho hàng đầu tiên */
+    display: flex; /* Sử dụng flexbox cho hàng đầu tiên */
+    justify-content: space-between; /* Căn giữa các thẻ p */
+    align-items: flex-start; /* Căn trên cùng cho các phần tử con */
+}
+
+.upload-section, .convert-section {
+    display: flex; /* Sử dụng flexbox cho các phần tử con */
+    flex-direction: column; /* Sắp xếp theo cột */
+    align-items: center; /* Căn giữa theo chiều ngang */
+    flex: 1; /* Chiếm đều không gian */
+    /* background-color: #6b96cf; */
+    margin: 10px;
+}
+
+.header p {
+    background-color: #f0f0f0; /* Màu nền cho các ô */
+    padding: 10px; /* Khoảng cách bên trong cho các ô */
+    border: 1px solid #ccc; /* Đường viền cho các ô */
+    border-radius: 5px; /* Bo góc cho các ô */
+    flex: 1; /* Chiếm đều không gian */
+    margin: 0 5px; /* Khoảng cách giữa các ô */
+    height: 100px;
+    text-align: center; /* Căn giữa nội dung trong thẻ p */
+}
+.center{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    /* background-color: #6b96cf; */
+    color: rgb(0, 0, 0);
+    padding: 10px 10px;
+    width: 100%;
+    /* border-radius: 30px; */
+    height: 80px;
+    flex-direction: row;
+    /* border-bottom: 1px solid #ccc; */
+}
+.upload-item {
+    display: flex; /* Sử dụng flexbox để sắp xếp các ảnh theo hàng */
+    flex-direction: row;
+    justify-content: center; /* Căn giữa các ảnh */
+    margin-top: 10px; /* Khoảng cách giữa tiêu đề và ảnh */
+    /* background-color: #f0f0f0; */
+
+}
+ .convert-item {
+    display: flex;
+    flex-direction: row;
+    text-align: center; /* Căn giữa nội dung */
+    margin: 10px 0; /* Khoảng cách giữa các mục */
+    /* background-color: #f0f0f0; */
+}
+
+.upload-item img, .convert-item img {
+    width: 50px; /* Kích thước ảnh (có thể điều chỉnh) */
+    height: 50px; /* Kích thước ảnh (có thể điều chỉnh) */
+}
+
+.count {
+    display: block; /* Hiển thị số lượng dưới ảnh */
+    margin-left: 10px;
+    margin-top: 5px; /* Khoảng cách giữa ảnh và số lượng */
+    font-size: 20px; /* Kích thước font cho số lượng */
+}
+.menu {
+    display: grid; /* Sử dụng grid layout cho menu */
+    grid-template-columns: repeat(4, 1fr); /* 4 cột cho menu */
+    list-style: none; /* Loại bỏ dấu đầu dòng */
+    padding: 0; /* Loại bỏ padding mặc định */
+    margin: 0; /* Loại bỏ margin mặc định */
+    gap: 10px; /* Khoảng cách giữa các ô */
+    width: 100%;
+    height: 100%;
+    grid-column: span 4;
+    height: 300px;
+}
+
+.menu li {
+    background-color: #f0f0f0; /* Màu nền cho các ô */
+    border: 1px solid #ccc; /* Đường viền cho các ô */
+    border-radius: 5px; /* Bo góc cho các ô */
+    text-align: center; /* Căn giữa nội dung */
+    padding: 10px; /* Khoảng cách bên trong cho các ô */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.menu li a {
+    text-decoration: none; /* Loại bỏ gạch chân */
+    color: #333; /* Màu chữ */
+    display: flex; /* Sử dụng flexbox để căn giữa nội dung */
+    flex-direction: column; /* Sắp xếp biểu tượng và tên theo cột */
+    align-items: center; /* Căn giữa theo chiều ngang */
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.menu li a i {
+    font-size: 24px; /* Kích thước biểu tượng */
+    margin-bottom: 10px; /* Khoảng cách giữa biểu tượng và tên */
+}
+.menu li a img {
+    width: 100px; /* Kích thước ảnh (có thể điều chỉnh) */
+    height: 100px; /* Kích thước ảnh (có thể điều chỉnh) */
+    margin-bottom: 5px; /* Khoảng cách giữa ảnh và tên */
+    margin-top: 10px;
+}
+.menu li a span {
+    font-size: 20px; /* Kích thước font cho tên */
+    font-weight: bold;
+}
+
+
+
+

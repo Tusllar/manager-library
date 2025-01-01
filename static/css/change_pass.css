@@ -1,0 +1,261 @@
+* {
+    box-sizing: border-box; /* Đảm bảo tính toán chiều rộng bao gồm padding và border */
+}
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7fb;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #002f6c;
+    color: white;
+    padding: 20px;
+}
+
+.user-info {
+    display: flex; /* Sử dụng flexbox để sắp xếp các phần tử */
+    align-items: center; /* Căn giữa theo chiều dọc */
+}
+
+.profile-img {
+    width: 60px; /* Đặt kích thước cho ảnh đại diện */
+    height: 60px; /* Đặt kích thước cho ảnh đại diện */
+    border-radius: 50%; /* Làm tròn ảnh đại diện */
+    margin-right: 10px; /* Khoảng cách giữa ảnh và thông tin người dùng */
+}
+
+.user-details  {
+    display: flex;
+    flex-direction: column; /* Sắp xếp tên và email theo cột */
+}
+.user-details p{
+    margin: 5px;
+}
+.user{
+    padding: 20px 0 0 0 ;
+    font-size: 18px;
+}
+.email {
+    font-size: 10px; /* Giảm kích thước font cho email */
+    color: #ffffff; /* Thay đổi màu sắc nếu cần */
+    padding: 0 0 10px 0;
+}
+.nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav li {
+    margin: 15px 0;
+}
+
+.nav a {
+    display: flex;
+    color: white;
+    align-items: center;
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
+    padding: 8px;
+    border-radius: 5px;
+    transition: background-color 0.3s,color 0.3s;
+}
+
+.nav a:hover {
+    background-color: #d51b1b;
+    color: #000;
+}
+.nav a.active {
+    background-color: #007bff; /* Màu nền cho liên kết đang hoạt động */
+    color: white; /* Màu chữ cho liên kết đang hoạt động */
+}
+.nav a i {
+    margin-right: 10px;
+    font-size: 20px;
+}
+.nav a span {
+    font-size: 16px;
+    font-weight: 500;
+}
+.menu-content {
+    display: flex;
+    /* padding: 10px; */
+    background-color: #f9f9f9;
+    overflow-y: auto;
+    /* align-items: center;  */
+    /* justify-content: center;  */
+    flex-direction: column;
+    width: 100%;
+}
+
+.top-navbar {
+    display: flex;
+    justify-content: flex-end;
+    background-color: #002f6c;
+    color: white;
+    padding: 25px 10px;
+    width: 100%;
+    /* border-radius: 30px; */
+    height: 50px;
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fafafa;
+    color: white;
+    padding: 10px 10px;
+    width: 100%;
+    /* border-radius: 30px; */
+    height: 90px;
+    flex-direction: row;
+    border-bottom: 1px solid #ccc;
+}
+.navbar-left, .navbar-right {
+    display: flex; /* Sử dụng flexbox cho các phần tử bên trái và bên phải */
+    flex-direction: column; /* Sắp xếp các phần tử theo cột */
+    align-items: center; /* Căn giữa theo chiều ngang */
+}
+.school {
+    font-weight: bold; /* Đậm cho tên trường */
+    margin: 0; /* Loại bỏ khoảng cách mặc định */
+    font-size: 25px;
+    padding: 0 10px 0 30px ;
+    color: #000;
+}
+
+.note {
+    margin: 0; /* Loại bỏ khoảng cách mặc định */
+    font-size: 0.9em; /* Kích thước font cho ghi chú (có thể thay đổi) */
+    color: #666; /* Màu sắc cho ghi chú (có thể thay đổi) */
+}
+.home {
+    font-size: 15px;
+    font-weight: bold;
+    margin: 0;
+    padding: 0 20px 0 0 ;
+    color: #000;
+}
+.upload-container{
+   /* background: url(../images/back3.jpg)  no-repeat; */
+   background-size: cover;
+   background-position: center;
+   width: 100%;
+   height: 100%;
+   background-color: rgb(126, 126, 126);
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   align-items: center;
+}
+.images{
+    background-color: #1a2650;
+    width: 100%;
+    height: 100%;
+    flex: 1;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    
+}
+.images1{
+    width: 100%;
+    height: 90%;
+    background-color: #007bff;
+    background:url(../images/sa.png)  no-repeat;
+
+    
+    background-size: cover;
+
+}
+.wrapper {
+    flex: 1;
+    /* width: 500px; */
+    /* background: rgba(163, 230, 207, 0.712); */
+    color:white;
+    border-radius: 20px;
+    padding: 10px ;
+    margin: 10px ;
+}
+.wrapper h2 {
+    font-size: px;
+    text-align: center;
+    color: #000000;
+
+}
+.wrapper .select{
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    
+}
+
+.wrapper .input-box{
+    position: relative;
+    width: 100%;
+    /* height: 50px; */
+    /* background: cornflowerblue; */
+    margin: 10px 0;
+    /* background-color: #d51b1b; */
+}
+.input-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.input-box input  {
+    width: 100%;
+    /* height: 100%; */
+    padding: 10px;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 5px;
+    color: black;
+    /* padding: 20px 45px 0px 20px; */
+    transition: border-color 0.3s ease;
+    margin: 10px;
+}
+.input-box input::placeholder{
+    color: grey;
+}
+.input-box i{
+    position: absolute;
+    right: 10px;
+    color: #000;
+    top: 60%;
+    transform: translate(-50%);
+    font-size: 20px;
+}
+
+
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.wrapper .btn{
+    width: 80%;
+    height: 50px;
+    background: white;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 16px;
+    color: #000;
+    font-weight: bold;
+    margin: 20px 0 0 15px ;
+    align-items: center;
+    
+}

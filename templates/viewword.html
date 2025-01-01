@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='stylecss.css') }}"> -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_view.css') }}">
+</head>
+<body>
+    
+    <div class="container">
+        <!-- Top Navbar -->
+       
+        <div class="sidebar">
+            <div class="user-info">
+                <!-- Container chứa ảnh và input -->
+                <div class="profile-img-container">
+                    <!-- Label giúp ảnh trở thành nút bấm -->
+                    <label for="upload-avatar">
+                        <img 
+                            src="{{ url_for('static', filename=user_info.avatar_url or 'doremon.png') }}" 
+                            alt="User Profile" 
+                            class="profile-img" 
+                            title="Bấm vào để cập nhật ảnh đại diện">
+                    </label>
+                    <!-- Input file được ẩn -->
+                    <input 
+                        type="file" 
+                        id="upload-avatar" 
+                        name="avatar" 
+                        accept="image/*" 
+                        style="display: none;" 
+                        onchange="uploadAvatar()">
+                </div>
+                <!-- Thông tin người dùng -->
+                <div class="user-details">
+                    <p class="user">{{ user_info.full_name }}</p>
+                    <p class="email">{{ user_info.email }}</p>
+                    <p class="email">{{ user.role }}</p>
+                </div>
+            </div>
+            
+            <hr>
+            <ul class="nav">
+                {% if user.role == 'admin' %}
+                <li><a   href="/admin"><i class='bx bxs-id-card'></i><span>Dash Board</span></a></li>
+                <li><a  href="/admin_manager"><i class='bx bxs-id-card'></i><span>User Manager</span></a></li>
+                {% elif user.role == 'student' %}
+                <li><a href="/home"><i class='bx bxs-id-card'></i><span>Home</span></a></li>
+                <li><a   href="/search_classes"><i class='bx bxs-file-find' ></i><span>Search Class</span></a></li>
+                <li><a  href="/my_class"><i class='bx bxs-file-find' ></i><span>My Class</span></a></li>
+                {% elif user.role == 'lecturer' %}
+                <li><a href="/lecturer"><i class='bx bxs-id-card'></i><span>Dash Lecturer</span></a></li>
+                {% endif %}
+                <li><a  href="/upload"><i class='bx bxs-cloud-upload' ></i><span>Upload</span></a></li>
+                <li><a   href="/convert"><i class='bx bx-transfer' ></i><span>Convert</span></a></li>
+                <li><a  class="active" href="/view"><i class='bx bxs-book-reader' ></i><span>View</span></a></li>
+                <li><a  href="/search"><i class='bx bxs-file-find' ></i><span>Search</span></a></li>
+                <li><a   href="/information"><i class='bx bxs-user-account' ></i><span>Update Profile</span></a></li>
+                <li><a   href="/change_pass"><i class='bx bxs-user-account' ></i><span>Forgot Password</span></a></li>
+                <li><a   class="nav-item nav-link" id="logout" href="/logout"><i class='bx bx-log-out' ></i><span>Logout</span></a></li>
+            </ul>
+        </div>
+       
+        <div class="menu-content">
+            <div class="top-navbar">
+                <div class="top-navbar-right">
+                </div>
+            </div>
+            <div class="navbar">
+                <div class="navbar-left"> 
+                    <p class="school"><i class='bx bxs-graduation' ></i>Danang University of Technology</p>
+                    <p class="note">First Term - 2024/2025 Session</p>
+                </div>
+                <div class="navbar-right"> 
+                    <p class="home"><i class='bx bxs-home'></i>/Home</p>
+                </div>
+            </div>
+            <div class="upload-container">
+                <div class="upload-done">
+                        <div class="'convertto">
+                            <h3>File</h3>
+                        </div>
+                        
+                        {% if user_files %}
+                        <div class="file-grid">
+                            {% for file in user_files %}
+                                {% if file.filetype == '.docx' %}
+                                    <div class="file-card">
+                                        <img src="{{ user_avatar_url or url_for('static', filename='/images/word1.png') }}" alt="{{ file.filename }}" class="file-image"> 
+                                        <a href="{{ file.link }}" target="_blank">
+                                            <span class="file-name">{{ file.filename }}</span>
+                                            <!-- <span class="file-type">(Type: {{ file.filetype }})</span> -->
+                                        </a>
+                                        <a href="{{ url_for('views.fetch_file', file_path=file.file_word) }}" class="btn btn-warning convert-btn">View</a>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}                  
+                        </div>
+                    {% else %}
+                        <p>No files uploaded yet.</p>
+                    {% endif %}
+                        
+                </div>    
+                <div class="word">
+                    <div class="word-title">
+                       
+                    </div>
+                    <div class="content-box">
+                        <h3>Document Content</h3>
+                        {% for part in context %}
+                            <div class="content-word">
+                                <pre>{{ part }}</pre>  
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="issues">
+                        <h3>Formatting Issues</h3>
+                        {% if issues %}
+                            <ul>
+                                {% for issue in issues %}
+                                    <li>
+                                        <strong>Issue:</strong> {{ issue.issue }}<br>
+                                        <strong>Recommendation:</strong> {{ issue.recommend }}
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% else %}
+                            <p>No issues found.</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+       
+    </div>
+    <script>
+        function uploadAvatar() {
+            const fileInput = document.getElementById('upload-avatar');
+            const file = fileInput.files[0];
+            if (!file) {
+                alert("Please select a file!");
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('avatar', file);
+
+            fetch('/update-avatar', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Avatar updated successfully!');
+                    location.reload();
+                } else {
+                    alert('Failed to update avatar! ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred while updating avatar!');
+            });
+        }
+    </script>
+</body>
+</html>
+
+
+

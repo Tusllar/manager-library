@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/forgot.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    
+    <div class="forgot">
+        <div id="back">
+            <a href="/login"><p>&lt; Quay lại</p></a>
+        </div>
+            <!-- Hiển thị thông báo flash -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              <ul class="flash-messages">
+                {% for category, message in messages %}
+                  <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+        {% endwith %}
+        <form method="POST" action="{{ url_for('user.forgot_password') }}">
+            <h1>Quên mật khẩu</h1>
+            <p>Nhập email hoặc username của bạn và chúng tôi sẽ gửi cho bạn mã khôi phục mật khẩu</p>
+            <input type="email" name="email" placeholder="Email hoặc Username" required="">
+            <button type="submit">Get Email</button>
+        </form>
+    </div>
+
+    <script>
+        const signUpButton = document.getElementById('signUp');
+        const signInButton = document.getElementById('signIn');
+        const main = document.getElementById('main');
+
+        signUpButton.addEventListener('click', () => {
+            main.classList.add("right-panel-active");
+        });
+        signInButton.addEventListener('click', () => {
+            main.classList.remove("right-panel-active");
+        });
+
+    </script>
+</body>
+</html>
+
